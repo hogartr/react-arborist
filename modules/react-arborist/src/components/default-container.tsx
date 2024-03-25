@@ -215,6 +215,7 @@ export function DefaultContainer() {
         });
         if (node) tree.focus(node.id);
       }}
+      {...tree.props.containerProps}
     >
       {/* @ts-ignore */}
       <VariableSizeList

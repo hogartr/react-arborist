@@ -18,7 +18,7 @@ export const ListOuterElement = forwardRef(function Outer(
         if (e.currentTarget === e.target) tree.deselectAll();
       }}
     >
-      <DropContainer />
+      {tree.props.disableDrop ? null : <DropContainer />}
       {children}
     </div>
   );

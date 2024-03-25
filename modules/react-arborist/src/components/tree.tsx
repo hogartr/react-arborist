@@ -10,19 +10,23 @@ import { useValidatedProps } from "../hooks/use-validated-props";
 
 function TreeComponent<T>(
   props: TreeProps<T>,
-  ref: React.Ref<TreeApi<T> | undefined>
+  ref: React.Ref<TreeApi<T> | undefined>,
 ) {
   const treeProps = useValidatedProps(props);
   return (
     <TreeProvider treeProps={treeProps} imperativeHandle={ref}>
-      <OuterDrop>
-        <TreeContainer />
-      </OuterDrop>
-      <DragPreviewContainer />
+      {props.disableDrop ? (
+        <TreeContainer key="tree-container" />
+      ) : (
+        <OuterDrop>
+          <TreeContainer key="tree-container" />
+        </OuterDrop>
+      )}
+      {!props.disableDrag && <DragPreviewContainer />}
     </TreeProvider>
   );
 }
 
 export const Tree = forwardRef(TreeComponent) as <T>(
-  props: TreeProps<T> & { ref?: React.ForwardedRef<TreeApi<T> | undefined> }
+  props: TreeProps<T> & { ref?: React.ForwardedRef<TreeApi<T> | undefined> },
 ) => ReturnType<typeof TreeComponent>;
