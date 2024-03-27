@@ -51,6 +51,7 @@ export default function Cities() {
                 onSelect={(selected) => setSelectedCount(selected.length)}
                 onActivate={(node) => setActive(node.data)}
                 onFocus={(node) => setFocused(node.data)}
+                onFiltered={(e) => console.log(e)}
                 onToggle={() => {
                   setTimeout(() => {
                     setCount(tree?.visibleNodes.length ?? 0);
@@ -72,6 +73,12 @@ export default function Cities() {
             In this demo, we hook into some callbacks, use the tree ref api, and
             render a large number of nodes.{" "}
           </p>
+          <section>
+            <label>Demo the open state</label>
+            <button onClick={() => console.log(tree?.openState)}>
+              Log Open State
+            </button>
+          </section>
           <section>
             <label>
               Demo the <i>selection</i> prop:

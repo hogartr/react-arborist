@@ -39,12 +39,12 @@ export function TreeProvider<T>({
   const listEl = useRef<HTMLDivElement | null>(null);
   const store = useRef<Store<RootState, Actions>>(
     // @ts-ignore
-    createStore(rootReducer, initialState(treeProps))
+    createStore(rootReducer, initialState(treeProps)),
   );
   const state = useSyncExternalStore<RootState>(
     store.current.subscribe,
     store.current.getState,
-    () => SERVER_STATE
+    () => SERVER_STATE,
   );
 
   /* The tree api object is stable. */
@@ -76,6 +76,10 @@ export function TreeProvider<T>({
     if (!api.props.searchTerm) {
       store.current.dispatch(visibility.clear(true));
     }
+  }, [api.props.searchTerm]);
+
+  useEffect(() => {
+    api.props.onFiltered?.(api.visibleNodes);
   }, [api.props.searchTerm]);
 
   return (

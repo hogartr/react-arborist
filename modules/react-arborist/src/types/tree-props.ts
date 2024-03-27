@@ -101,4 +101,5 @@ export interface TreeProps<T> {
 
   containerProps?: React.HTMLAttributes<HTMLDivElement>;
   containerRef?: React.Ref<HTMLDivElement>;
+  onFiltered?: (visibleNodes: NodeApi<T>[]) => void;
 }
