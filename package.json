@@ -7,7 +7,8 @@
     "build": "yarn workspaces foreach --all run build",
     "test": "yarn workspaces foreach --all run test",
     "bump": "yarn workspace react-arborist version",
-    "publish": "sh bin/publish"
+    "publish": "sh bin/publish",
+    "start": "yarn workspace showcase start"
   },
   "private": true,
   "packageManager": "yarn@4.0.2",
