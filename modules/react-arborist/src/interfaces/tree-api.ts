@@ -53,6 +53,7 @@ export class TreeApi<T> {
     this.root = createRoot<T>(this);
     this.visibleNodes = createList<T>(this);
     this.idToIndex = createIndex(this.visibleNodes);
+    this.redrawList(undefined, false);
   }
 
   /* Store helpers */
@@ -114,8 +115,11 @@ export class TreeApi<T> {
     return position;
   };
 
-  redrawList = (afterIndex?: number | undefined | null) => {
-    this.list.current?.resetAfterIndex(afterIndex ?? 0);
+  redrawList = (
+    afterIndex?: number | undefined | null,
+    shouldForceUpdate?: boolean | undefined,
+  ) => {
+    this.list.current?.resetAfterIndex(afterIndex ?? 0, shouldForceUpdate);
   };
 
   get matchFn() {
@@ -123,7 +127,7 @@ export class TreeApi<T> {
       this.props.searchMatch ??
       ((node, term) => {
         const string = JSON.stringify(
-          Object.values(node.data as { [k: string]: unknown })
+          Object.values(node.data as { [k: string]: unknown }),
         );
         return string.toLocaleLowerCase().includes(term.toLocaleLowerCase());
       });
@@ -140,7 +144,7 @@ export class TreeApi<T> {
     const id = utils.access<string>(data, get);
     if (!id)
       throw new Error(
-        "Data must contain an 'id' property or props.idAccessor must return a string"
+        "Data must contain an 'id' property or props.idAccessor must return a string",
       );
     return id;
   }
@@ -508,7 +512,6 @@ export class TreeApi<T> {
     if (!id) return;
     if (this.isOpen(id)) return;
     this.dispatch(visibility.open(id, this.isFiltered));
-    redraw && this.redrawList(this.get(id)?.rowIndex);
     safeRun(this.props.onToggle, id);
   }
 
@@ -517,7 +520,6 @@ export class TreeApi<T> {
     if (!id) return;
     if (!this.isOpen(id)) return;
     this.dispatch(visibility.close(id, this.isFiltered));
-    redraw && this.redrawList(this.get(id)?.rowIndex);
     safeRun(this.props.onToggle, id);
   }
 
@@ -537,7 +539,6 @@ export class TreeApi<T> {
       this.open(parent.id, false);
       parent = parent.parent;
     }
-    this.redrawList();
   }
 
   openSiblings(node: NodeApi<T>) {
@@ -551,7 +552,6 @@ export class TreeApi<T> {
           isOpen ? this.close(sibling.id, false) : this.open(sibling.id, false);
         }
       }
-      this.redrawList();
       this.scrollTo(this.focusedNode);
     }
   }
@@ -560,14 +560,12 @@ export class TreeApi<T> {
     utils.walk(this.root, (node) => {
       if (node.isInternal) this.open(node, false);
     });
-    this.redrawList();
   }
 
   closeAll() {
     utils.walk(this.root, (node) => {
       if (node.isInternal) this.close(node, false);
     });
-    this.redrawList();
   }
 
   /* Scrolling */

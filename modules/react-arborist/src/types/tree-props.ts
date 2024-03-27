@@ -100,4 +100,5 @@ export interface TreeProps<T> {
   dndManager?: ReturnType<typeof useDragDropManager>;
 
   containerProps?: React.HTMLAttributes<HTMLDivElement>;
+  containerRef?: React.Ref<HTMLDivElement>;
 }

@@ -4,10 +4,15 @@ import { DefaultContainer } from "./default-container";
 
 export function TreeContainer() {
   const tree = useTreeApi();
-  const Container = tree.props.renderContainer || DefaultContainer;
+
+  if (tree.props.renderContainer) {
+    const Container = tree.props.renderContainer;
+    return <Container />;
+  }
+
   return (
     <>
-      <Container />
+      <DefaultContainer ref={tree.props.containerRef} />
     </>
   );
 }
