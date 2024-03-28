@@ -13,6 +13,7 @@ export const ListOuterElement = forwardRef(function Outer(
     <div
       // @ts-ignore
       ref={ref}
+      {...tree.props.listElementProps}
       {...rest}
       onClick={(e) => {
         if (e.currentTarget === e.target) tree.deselectAll();
