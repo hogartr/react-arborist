@@ -82,6 +82,10 @@ export function TreeProvider<T>({
     api.props.onFiltered?.(api.visibleNodes);
   }, [api.props.searchTerm]);
 
+  useEffect(() => {
+    api.props.onVisibilityChange?.(api.visibleNodes);
+  }, [api.visibleNodes]);
+
   return (
     <TreeApiContext.Provider value={api}>
       <DataUpdatesContext.Provider value={updateCount.current}>
