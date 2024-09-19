@@ -8,6 +8,7 @@ export type GmailItem = {
   unread?: number;
   readOnly: boolean;
   children?: GmailItem[];
+  collapsed?: boolean;
 };
 
 export const gmailData: GmailItem[] = [
@@ -17,6 +18,7 @@ export const gmailData: GmailItem[] = [
     unread: 1,
     readOnly: true,
     icon: icons.MdInbox,
+    collapsed: true,
   },
   {
     id: "2",
@@ -24,6 +26,7 @@ export const gmailData: GmailItem[] = [
     unread: 0,
     readOnly: true,
     icon: icons.MdStarOutline,
+    collapsed: true,
   },
   {
     id: "3",
@@ -31,6 +34,7 @@ export const gmailData: GmailItem[] = [
     unread: 0,
     readOnly: true,
     icon: icons.MdAccessTime,
+    collapsed: true,
   },
   {
     id: "4",
@@ -38,6 +42,7 @@ export const gmailData: GmailItem[] = [
     unread: 0,
     readOnly: true,
     icon: icons.MdSend,
+    collapsed: true,
   },
   {
     id: "5",
@@ -45,6 +50,7 @@ export const gmailData: GmailItem[] = [
     unread: 14,
     readOnly: true,
     icon: icons.MdOutlineDrafts,
+    collapsed: true,
   },
   {
     id: "6",
@@ -52,6 +58,7 @@ export const gmailData: GmailItem[] = [
     unread: 54,
     readOnly: true,
     icon: icons.MdOutlineReportGmailerrorred,
+    collapsed: true,
   },
   {
     id: "7",
@@ -59,6 +66,7 @@ export const gmailData: GmailItem[] = [
     unread: 0,
     readOnly: true,
     icon: icons.MdLabelImportantOutline,
+    collapsed: true,
   },
   {
     id: "8",
@@ -66,6 +74,7 @@ export const gmailData: GmailItem[] = [
     unread: 0,
     readOnly: true,
     icon: icons.MdOutlineChat,
+    collapsed: true,
   },
   {
     id: "9",
@@ -73,6 +82,7 @@ export const gmailData: GmailItem[] = [
     unread: 0,
     readOnly: true,
     icon: icons.MdOutlineScheduleSend,
+    collapsed: true,
   },
   {
     id: "10",
@@ -80,6 +90,7 @@ export const gmailData: GmailItem[] = [
     unread: 0,
     readOnly: true,
     icon: icons.MdOutlineMail,
+    collapsed: true,
   },
   {
     id: "11",
@@ -87,12 +98,14 @@ export const gmailData: GmailItem[] = [
     unread: 0,
     readOnly: true,
     icon: icons.MdOutlineDelete,
+    collapsed: true,
   },
   {
     id: "12",
     name: "Categories",
     icon: icons.MdOutlineLabel,
     readOnly: true,
+    collapsed: false,
     children: [
       {
         id: "13",
@@ -100,6 +113,7 @@ export const gmailData: GmailItem[] = [
         unread: 946,
         readOnly: false,
         icon: icons.MdPeopleOutline,
+        collapsed: true,
       },
       {
         id: "14",
@@ -107,6 +121,7 @@ export const gmailData: GmailItem[] = [
         unread: 4580,
         readOnly: false,
         icon: icons.MdOutlineInfo,
+        collapsed: true,
       },
       {
         id: "15",
@@ -114,12 +129,14 @@ export const gmailData: GmailItem[] = [
         unread: 312,
         readOnly: false,
         icon: icons.MdChatBubbleOutline,
+        collapsed: true,
         children: [
           {
             id: "15-1",
             name: "Github",
             readOnly: false,
             icon: icons.MdSocialDistance,
+            collapsed: true,
           },
         ],
       },
@@ -129,6 +146,7 @@ export const gmailData: GmailItem[] = [
         unread: 312,
         readOnly: false,
         icon: icons.MdOutlineLocalOffer,
+        collapsed: true,
       },
     ],
   },

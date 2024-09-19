@@ -12,15 +12,40 @@ import styles from "../styles/Gmail.module.css";
 import { FillFlexParent } from "../components/fill-flex-parent";
 import { SiGmail } from "react-icons/si";
 import { BsTree } from "react-icons/bs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { OpenMap } from "react-arborist/dist/module/state/open-slice";
 
 export default function GmailSidebar() {
-  const [term, setTerm] = useState("");
+  const [term, setTerm] = useState<string>("");
+  const [openStateMap, setOpenStateMap] = useState<OpenMap | null>(null)
   const globalTree = (tree?: TreeApi<GmailItem> | null) => {
     // @ts-ignore
     window.tree = tree;
   };
+
+  useEffect(() => {
+    if (!openStateMap && !!gmailData) {
+      console.log("Calculating map")
+      const newMap: OpenMap = {}
+
+      const getOpenStateMap = (nodes: GmailItem[]) => {
+        nodes.forEach((node: GmailItem) => {
+          newMap[node.id] = !node.collapsed
+          if (node.children) {
+            getOpenStateMap(node.children)
+          }
+        });
+      }
+      getOpenStateMap(gmailData)
+
+      setOpenStateMap(newMap)
+    }
+  }, [gmailData, openStateMap])
+
+  const handleToggle = (id: string) => {
+    console.log(id)
+  }
 
   return (
     <div className={styles.page}>
@@ -43,11 +68,13 @@ export default function GmailSidebar() {
                   initialData={gmailData}
                   width={width}
                   height={height}
-                  rowHeight={32}
+                  rowHeight={(node) => node.isOpen ? 50 : 24}
                   renderCursor={Cursor}
                   searchTerm={term}
                   paddingBottom={32}
                   disableEdit={(data) => data.readOnly}
+                  initialOpenState={openStateMap}
+                  onToggle={((id) => handleToggle(id))}
                   disableDrop={({ parentNode, dragNodes }) => {
                     if (
                       parentNode.data.name === "Categories" &&
