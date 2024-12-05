@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DefaultDragPreview = void 0;
+exports.DefaultDragPreview = DefaultDragPreview;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const react_1 = require("react");
 const context_1 = require("../context");
@@ -28,7 +28,6 @@ const getCountStyle = (offset) => {
 function DefaultDragPreview({ offset, mouse, id, dragIds, isDragging, }) {
     return ((0, jsx_runtime_1.jsxs)(Overlay, { isDragging: isDragging, children: [(0, jsx_runtime_1.jsx)(Position, { offset: offset, children: (0, jsx_runtime_1.jsx)(PreviewNode, { id: id, dragIds: dragIds }) }), (0, jsx_runtime_1.jsx)(Count, { mouse: mouse, count: dragIds.length })] }));
 }
-exports.DefaultDragPreview = DefaultDragPreview;
 const Overlay = (0, react_1.memo)(function Overlay(props) {
     if (!props.isDragging)
         return null;

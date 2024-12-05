@@ -185,9 +185,9 @@ export class TreeApi {
     createLeaf() {
         return this.create({ type: "leaf" });
     }
-    create(opts = {}) {
-        var _a, _b;
-        return __awaiter(this, void 0, void 0, function* () {
+    create() {
+        return __awaiter(this, arguments, void 0, function* (opts = {}) {
+            var _a, _b;
             const parentId = opts.parentId === undefined
                 ? utils.getInsertParentId(this)
                 : opts.parentId;
@@ -233,8 +233,8 @@ export class TreeApi {
         });
     }
     submit(identity, value) {
-        var _a;
         return __awaiter(this, void 0, void 0, function* () {
+            var _a;
             if (!identity)
                 return;
             const id = identify(identity);
@@ -595,14 +595,12 @@ export class TreeApi {
         }
     }
     isEditable(data) {
-        var _a;
         const check = this.props.disableEdit || (() => false);
-        return (_a = !utils.access(data, check)) !== null && _a !== void 0 ? _a : true;
+        return !utils.access(data, check);
     }
     isDraggable(data) {
-        var _a;
         const check = this.props.disableDrag || (() => false);
-        return (_a = !utils.access(data, check)) !== null && _a !== void 0 ? _a : true;
+        return !utils.access(data, check);
     }
     isDragging(node) {
         const id = identifyNull(node);

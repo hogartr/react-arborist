@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Cursor = void 0;
+exports.Cursor = Cursor;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const context_1 = require("../context");
 function Cursor() {
@@ -17,4 +17,3 @@ function Cursor() {
     const Cursor = tree.renderCursor;
     return (0, jsx_runtime_1.jsx)(Cursor, { top, left, indent });
 }
-exports.Cursor = Cursor;

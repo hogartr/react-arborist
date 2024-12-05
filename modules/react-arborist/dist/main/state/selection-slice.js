@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.reducer = exports.actions = void 0;
+exports.actions = void 0;
+exports.reducer = reducer;
 const utils_1 = require("../utils");
 const initial_1 = require("./initial");
 /* Actions */
@@ -56,4 +57,3 @@ function reducer(state = (0, initial_1.initialState)()["nodes"]["selection"], ac
             return state;
     }
 }
-exports.reducer = reducer;

@@ -62,11 +62,11 @@ export declare class TreeApi<T> {
             type: "SELECTION_ONLY";
             id: string;
         };
-        add: (id: string | IdObj | string[] | IdObj[]) => {
+        add: (id: string | string[] | IdObj | IdObj[]) => {
             type: "SELECTION_ADD";
             ids: string[];
         };
-        remove: (id: string | IdObj | string[] | IdObj[]) => {
+        remove: (id: string | string[] | IdObj | IdObj[]) => {
             type: "SELECTION_REMOVE";
             ids: string[];
         };
@@ -80,11 +80,11 @@ export declare class TreeApi<T> {
             mostRecent: string | null;
             type: "SELECTION_SET";
         };
-        mostRecent: (id: string | IdObj | null) => {
+        mostRecent: (id: string | null | IdObj) => {
             type: "SELECTION_MOST_RECENT";
             id: string | null;
         };
-        anchor: (id: string | IdObj | null) => {
+        anchor: (id: string | null | IdObj) => {
             type: "SELECTION_ANCHOR";
             id: string | null;
         };

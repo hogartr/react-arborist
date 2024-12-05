@@ -3,7 +3,7 @@
 // Each line is a node
 // The number of spaces at the beginning indicate the level
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.makeTree = void 0;
+exports.makeTree = makeTree;
 function makeTree(string) {
     const root = { id: "ROOT", name: "ROOT", isOpen: true };
     let prevNode = root;
@@ -37,4 +37,3 @@ function makeTree(string) {
     });
     return root;
 }
-exports.makeTree = makeTree;

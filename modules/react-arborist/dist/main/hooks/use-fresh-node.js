@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.useFreshNode = void 0;
+exports.useFreshNode = useFreshNode;
 const react_1 = require("react");
 const context_1 = require("../context");
 function useFreshNode(index) {
@@ -15,4 +15,3 @@ function useFreshNode(index) {
         // Return a fresh instance if the state values change
     }, [...Object.values(original.state), original]);
 }
-exports.useFreshNode = useFreshNode;

@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createRoot = exports.ROOT_ID = void 0;
+exports.ROOT_ID = void 0;
+exports.createRoot = createRoot;
 const node_api_1 = require("../interfaces/node-api");
 exports.ROOT_ID = "__REACT_ARBORIST_INTERNAL_ROOT__";
 function createRoot(tree) {
@@ -40,4 +41,3 @@ function createRoot(tree) {
     });
     return root;
 }
-exports.createRoot = createRoot;

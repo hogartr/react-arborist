@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TreeProvider = void 0;
+exports.TreeProvider = TreeProvider;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const react_1 = require("react");
 const shim_1 = require("use-sync-external-store/shim");
@@ -49,4 +49,3 @@ function TreeProvider({ treeProps, imperativeHandle, children, }) {
     }, [api.props.searchTerm]);
     return ((0, jsx_runtime_1.jsx)(context_1.TreeApiContext.Provider, { value: api, children: (0, jsx_runtime_1.jsx)(context_1.DataUpdatesContext.Provider, { value: updateCount.current, children: (0, jsx_runtime_1.jsx)(context_1.NodesContext.Provider, { value: state.nodes, children: (0, jsx_runtime_1.jsx)(context_1.DndContext.Provider, { value: state.dnd, children: (0, jsx_runtime_1.jsx)(react_dnd_1.DndProvider, Object.assign({ backend: react_dnd_html5_backend_1.HTML5Backend, options: { rootElement: api.props.dndRootElement || undefined } }, (treeProps.dndManager && { manager: treeProps.dndManager }), { children: children })) }) }) }) }));
 }
-exports.TreeProvider = TreeProvider;

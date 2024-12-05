@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DefaultNode = void 0;
+exports.DefaultNode = DefaultNode;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const react_1 = require("react");
 function DefaultNode(props) {
@@ -9,7 +9,6 @@ function DefaultNode(props) {
                     props.node.toggle();
                 }, children: props.node.isLeaf ? "🌳" : props.node.isOpen ? "🗁" : "🗀" }), " ", props.node.isEditing ? (0, jsx_runtime_1.jsx)(Edit, Object.assign({}, props)) : (0, jsx_runtime_1.jsx)(Show, Object.assign({}, props))] }));
 }
-exports.DefaultNode = DefaultNode;
 function Show(props) {
     return ((0, jsx_runtime_1.jsx)(jsx_runtime_1.Fragment, { children: (0, jsx_runtime_1.jsx)("span", { children: props.node.data.name }) }));
 }

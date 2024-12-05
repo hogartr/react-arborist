@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TreeContainer = void 0;
+exports.TreeContainer = TreeContainer;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const context_1 = require("../context");
 const default_container_1 = require("./default-container");
@@ -9,4 +9,3 @@ function TreeContainer() {
     const Container = tree.props.renderContainer || default_container_1.DefaultContainer;
     return ((0, jsx_runtime_1.jsx)(jsx_runtime_1.Fragment, { children: (0, jsx_runtime_1.jsx)(Container, {}) }));
 }
-exports.TreeContainer = TreeContainer;

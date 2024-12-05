@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.useDragHook = void 0;
+exports.useDragHook = useDragHook;
 const react_1 = require("react");
 const react_dnd_1 = require("react-dnd");
 const react_dnd_html5_backend_1 = require("react-dnd-html5-backend");
@@ -18,7 +18,7 @@ function useDragHook(node) {
             // This is fired once at the begging of a drag operation
             const dragIds = tree.isSelected(node.id) ? Array.from(ids) : [node.id];
             tree.dispatch(dnd_slice_1.actions.dragStart(node.id, dragIds));
-            return { id: node.id };
+            return { id: node.id, dragIds };
         },
         end: () => {
             var _a, _b;
@@ -45,4 +45,3 @@ function useDragHook(node) {
     }, [preview]);
     return ref;
 }
-exports.useDragHook = useDragHook;

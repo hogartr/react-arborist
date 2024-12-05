@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.useOuterDrop = void 0;
+exports.useOuterDrop = useOuterDrop;
 const react_dnd_1 = require("react-dnd");
 const context_1 = require("../context");
 const compute_drop_1 = require("./compute-drop");
@@ -42,4 +42,3 @@ function useOuterDrop() {
     }), [tree]);
     drop(tree.listEl);
 }
-exports.useOuterDrop = useOuterDrop;

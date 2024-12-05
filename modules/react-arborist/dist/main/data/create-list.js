@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createList = void 0;
+exports.createList = createList;
 function createList(tree) {
     if (tree.isFiltered) {
         return flattenAndFilterTree(tree.root, tree.isMatch.bind(tree));
@@ -9,7 +9,6 @@ function createList(tree) {
         return flattenTree(tree.root);
     }
 }
-exports.createList = createList;
 function flattenTree(root) {
     const list = [];
     function collect(node) {

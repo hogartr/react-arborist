@@ -44,11 +44,11 @@ export declare const rootReducer: import("redux").Reducer<{
         type: "SELECTION_ONLY";
         id: string;
     };
-    add: (id: string | import("../types/utils").IdObj | string[] | import("../types/utils").IdObj[]) => {
+    add: (id: string | string[] | import("../types/utils").IdObj | import("../types/utils").IdObj[]) => {
         type: "SELECTION_ADD";
         ids: string[];
     };
-    remove: (id: string | import("../types/utils").IdObj | string[] | import("../types/utils").IdObj[]) => {
+    remove: (id: string | string[] | import("../types/utils").IdObj | import("../types/utils").IdObj[]) => {
         type: "SELECTION_REMOVE";
         ids: string[];
     };
@@ -62,11 +62,11 @@ export declare const rootReducer: import("redux").Reducer<{
         mostRecent: string | null;
         type: "SELECTION_SET";
     };
-    mostRecent: (id: string | import("../types/utils").IdObj | null) => {
+    mostRecent: (id: string | null | import("../types/utils").IdObj) => {
         type: "SELECTION_MOST_RECENT";
         id: string | null;
     };
-    anchor: (id: string | import("../types/utils").IdObj | null) => {
+    anchor: (id: string | null | import("../types/utils").IdObj) => {
         type: "SELECTION_ANCHOR";
         id: string | null;
     };

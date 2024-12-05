@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.reducer = exports.actions = void 0;
+exports.actions = void 0;
+exports.reducer = reducer;
 /* Actions */
 exports.actions = {
     open(id, filtered) {
@@ -45,4 +46,3 @@ function reducer(state = { filtered: {}, unfiltered: {} }, action) {
         return Object.assign(Object.assign({}, state), { unfiltered: openMapReducer(state.unfiltered, action) });
     }
 }
-exports.reducer = reducer;

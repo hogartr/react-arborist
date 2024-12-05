@@ -1,23 +1,36 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getInsertParentId = exports.getInsertIndex = exports.waitFor = exports.safeRun = exports.mergeRefs = exports.identify = exports.identifyNull = exports.access = exports.focusPrevElement = exports.focusNextElement = exports.walk = exports.dfs = exports.noop = exports.indexOf = exports.isDescendant = exports.isOpenWithEmptyChildren = exports.isClosed = exports.isItem = exports.bound = void 0;
+exports.indexOf = exports.isDescendant = void 0;
+exports.bound = bound;
+exports.isItem = isItem;
+exports.isClosed = isClosed;
+exports.isOpenWithEmptyChildren = isOpenWithEmptyChildren;
+exports.noop = noop;
+exports.dfs = dfs;
+exports.walk = walk;
+exports.focusNextElement = focusNextElement;
+exports.focusPrevElement = focusPrevElement;
+exports.access = access;
+exports.identifyNull = identifyNull;
+exports.identify = identify;
+exports.mergeRefs = mergeRefs;
+exports.safeRun = safeRun;
+exports.waitFor = waitFor;
+exports.getInsertIndex = getInsertIndex;
+exports.getInsertParentId = getInsertParentId;
 function bound(n, min, max) {
     return Math.max(Math.min(n, max), min);
 }
-exports.bound = bound;
 function isItem(node) {
     return node && node.isLeaf;
 }
-exports.isItem = isItem;
 function isClosed(node) {
     return node && node.isInternal && !node.isOpen;
 }
-exports.isClosed = isClosed;
 function isOpenWithEmptyChildren(node) {
     var _a;
     return node && node.isOpen && !((_a = node.children) === null || _a === void 0 ? void 0 : _a.length);
 }
-exports.isOpenWithEmptyChildren = isOpenWithEmptyChildren;
 /**
  * Is first param a descendant of the second param
  */
@@ -38,7 +51,6 @@ const indexOf = (node) => {
 };
 exports.indexOf = indexOf;
 function noop() { }
-exports.noop = noop;
 function dfs(node, id) {
     if (!node)
         return null;
@@ -53,7 +65,6 @@ function dfs(node, id) {
     }
     return null;
 }
-exports.dfs = dfs;
 function walk(node, fn) {
     fn(node);
     if (node.children) {
@@ -62,7 +73,6 @@ function walk(node, fn) {
         }
     }
 }
-exports.walk = walk;
 function focusNextElement(target) {
     const elements = getFocusable(target);
     let next;
@@ -76,7 +86,6 @@ function focusNextElement(target) {
     // @ts-ignore ??
     next === null || next === void 0 ? void 0 : next.focus();
 }
-exports.focusNextElement = focusNextElement;
 function focusPrevElement(target) {
     const elements = getFocusable(target);
     let next;
@@ -90,7 +99,6 @@ function focusPrevElement(target) {
     // @ts-ignore
     next === null || next === void 0 ? void 0 : next.focus();
 }
-exports.focusPrevElement = focusPrevElement;
 function nextItem(list, index) {
     if (index + 1 < list.length) {
         return list[index + 1];
@@ -117,18 +125,15 @@ function access(obj, accessor) {
         return obj[accessor];
     return accessor(obj);
 }
-exports.access = access;
 function identifyNull(obj) {
     if (obj === null)
         return null;
     else
         return identify(obj);
 }
-exports.identifyNull = identifyNull;
 function identify(obj) {
     return typeof obj === "string" ? obj : obj.id;
 }
-exports.identify = identify;
 function mergeRefs(...refs) {
     return (instance) => {
         refs.forEach((ref) => {
@@ -141,12 +146,10 @@ function mergeRefs(...refs) {
         });
     };
 }
-exports.mergeRefs = mergeRefs;
 function safeRun(fn, ...args) {
     if (fn)
         return fn(...args);
 }
-exports.safeRun = safeRun;
 function waitFor(fn) {
     return new Promise((resolve, reject) => {
         let tries = 0;
@@ -162,7 +165,6 @@ function waitFor(fn) {
         check();
     });
 }
-exports.waitFor = waitFor;
 function getInsertIndex(tree) {
     var _a, _b;
     const focus = tree.focusedNode;
@@ -174,7 +176,6 @@ function getInsertIndex(tree) {
         return focus.childIndex + 1;
     return 0;
 }
-exports.getInsertIndex = getInsertIndex;
 function getInsertParentId(tree) {
     const focus = tree.focusedNode;
     if (!focus)
@@ -185,4 +186,3 @@ function getInsertParentId(tree) {
         return focus.parent.id;
     return null;
 }
-exports.getInsertParentId = getInsertParentId;

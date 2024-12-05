@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DefaultContainer = void 0;
+exports.DefaultContainer = DefaultContainer;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const react_window_1 = require("react-window");
 const context_1 = require("../context");
@@ -235,4 +235,3 @@ function DefaultContainer() {
                 tree.focus(node.id);
         }, children: (0, jsx_runtime_1.jsx)(react_window_1.VariableSizeList, { className: tree.props.className, outerRef: tree.listEl, itemCount: tree.visibleNodes.length, height: tree.height, width: tree.width, itemSize: tree.rowHeight, overscanCount: tree.overscanCount, itemKey: (index) => { var _a; return ((_a = tree.visibleNodes[index]) === null || _a === void 0 ? void 0 : _a.id) || index; }, outerElementType: list_outer_element_1.ListOuterElement, innerElementType: list_inner_element_1.ListInnerElement, onScroll: tree.props.onScroll, onItemsRendered: tree.onItemsRendered.bind(tree), ref: tree.list, children: row_container_1.RowContainer }) }));
 }
-exports.DefaultContainer = DefaultContainer;

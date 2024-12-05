@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.useSimpleTree = void 0;
+exports.useSimpleTree = useSimpleTree;
 const react_1 = require("react");
 const simple_tree_1 = require("../data/simple-tree");
 let nextId = 0;
@@ -32,4 +32,3 @@ function useSimpleTree(initialData) {
     const controller = { onMove, onRename, onCreate, onDelete };
     return [data, controller];
 }
-exports.useSimpleTree = useSimpleTree;

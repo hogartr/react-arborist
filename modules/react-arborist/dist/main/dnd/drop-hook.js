@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.useDropHook = void 0;
+exports.useDropHook = useDropHook;
 const react_dnd_1 = require("react-dnd");
 const context_1 = require("../context");
 const compute_drop_1 = require("./compute-drop");
@@ -39,4 +39,3 @@ function useDropHook(el, node) {
     }), [node, el.current, tree.props]);
     return dropRef;
 }
-exports.useDropHook = useDropHook;

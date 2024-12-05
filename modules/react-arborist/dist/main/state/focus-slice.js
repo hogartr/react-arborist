@@ -1,16 +1,16 @@
 "use strict";
 /* Types */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.reducer = exports.treeBlur = exports.focus = void 0;
+exports.focus = focus;
+exports.treeBlur = treeBlur;
+exports.reducer = reducer;
 /* Actions */
 function focus(id) {
     return { type: "FOCUS", id };
 }
-exports.focus = focus;
 function treeBlur() {
     return { type: "TREE_BLUR" };
 }
-exports.treeBlur = treeBlur;
 /* Reducer */
 function reducer(state = { id: null, treeFocused: false }, action) {
     if (action.type === "FOCUS") {
@@ -23,4 +23,3 @@ function reducer(state = { id: null, treeFocused: false }, action) {
         return state;
     }
 }
-exports.reducer = reducer;

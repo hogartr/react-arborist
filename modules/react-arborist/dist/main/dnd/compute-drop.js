@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.computeDrop = void 0;
+exports.computeDrop = computeDrop;
 const utils_1 = require("../utils");
 function measureHover(el, offset) {
     const rect = el.getBoundingClientRect();
@@ -140,4 +140,3 @@ function computeDrop(args) {
         cursor: lineCursor(above.rowIndex + 1, above.level + 1),
     };
 }
-exports.computeDrop = computeDrop;

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.measureHover = void 0;
+exports.measureHover = measureHover;
 const utils_1 = require("../utils");
 function measureHover(el, offset, indent) {
     const nextEl = el.nextElementSibling;
@@ -18,4 +18,3 @@ function measureHover(el, offset, indent) {
     const level = (0, utils_1.bound)(Math.floor(x / indent), minLevel, maxLevel);
     return { level, inTopHalf, inBottomHalf, inMiddle };
 }
-exports.measureHover = measureHover;

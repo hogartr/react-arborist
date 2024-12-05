@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.reducer = exports.edit = void 0;
+exports.edit = edit;
+exports.reducer = reducer;
 /* Actions */
 function edit(id) {
     return { type: "EDIT", id };
 }
-exports.edit = edit;
 /* Reducer */
 function reducer(state = { id: null }, action) {
     if (action.type === "EDIT") {
@@ -15,4 +15,3 @@ function reducer(state = { id: null }, action) {
         return state;
     }
 }
-exports.reducer = reducer;

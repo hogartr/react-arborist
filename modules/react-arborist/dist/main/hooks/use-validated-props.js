@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.useValidatedProps = void 0;
+exports.useValidatedProps = useValidatedProps;
 const use_simple_tree_1 = require("./use-simple-tree");
 function useValidatedProps(props) {
     if (props.initialData && props.data) {
@@ -26,4 +26,3 @@ Use the data prop if you want to provide your own handlers.`);
         return props;
     }
 }
-exports.useValidatedProps = useValidatedProps;
